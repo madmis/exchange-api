@@ -114,7 +114,6 @@ abstract class AbstractEndpoint
         static $serializer = null;
         if ($serializer === null) {
             $normalizers = [
-                new ObjectNormalizer(),
                 new GetSetMethodNormalizer(),
                 new DateTimeNormalizer(),
             ];
