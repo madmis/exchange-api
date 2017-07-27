@@ -31,13 +31,11 @@ class GuzzleClientTest extends TestCase
     public function testSendError()
     {
         $client = new GuzzleClient('http://localhost:8000/', '/', ['first' => 1]);
-        $request = $client->createRequest('GET', '/me');
+        $request = $client->createRequest('GET', '/response_404');
 
         try {
-            $client->send($request, ['query' => ['test' => 'value']]);
+            $client->send($request);
         } catch (ClientException $e) {
-//            static::assertNotNull($e->getRequest());
-//            static::assertNotNull($e->getResponse());
         }
 
         static::assertNotNull($client->getLastRequest());
