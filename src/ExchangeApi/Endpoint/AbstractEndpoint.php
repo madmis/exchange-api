@@ -114,11 +114,10 @@ abstract class AbstractEndpoint
     {
         static $serializer = null;
         if ($serializer === null) {
-            $caseNormalizer = new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter());
             $normalizers = [
-                new GetSetMethodNormalizer(),
+                new GetSetMethodNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
                 new DateTimeNormalizer(),
-                $caseNormalizer,
+                new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter()),
             ];
             $serializer = $serializer = new Serializer($normalizers, [new JsonEncoder()]);
         }
