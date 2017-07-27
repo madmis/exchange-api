@@ -5,6 +5,7 @@ namespace madmis\ExchangeApi\Endpoint;
 use madmis\ExchangeApi\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -116,6 +117,7 @@ abstract class AbstractEndpoint
             $normalizers = [
                 new GetSetMethodNormalizer(),
                 new DateTimeNormalizer(),
+                new CamelCaseToSnakeCaseNameConverter()
             ];
             $serializer = $serializer = new Serializer($normalizers, [new JsonEncoder()]);
         }
