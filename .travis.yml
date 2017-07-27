@@ -14,7 +14,7 @@ install:
 
 before_script:
     - mkdir -p build/logs
-    - php -S localhost:8000 &
+    - php -S localhost:8000 -t $TRAVIS_BUILD_DIR/tests/web &
 
 script:
     - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml

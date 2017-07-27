@@ -4,12 +4,13 @@ namespace Test\Endpoint;
 
 use GuzzleHttp\Psr7\Response;
 use madmis\ExchangeApi\Endpoint\AbstractEndpoint;
+use madmis\ExchangeApi\Endpoint\EndpointInterface;
 
 /**
  * Class Endpoint
  * @package Test\Endpoint
  */
-class Endpoint extends AbstractEndpoint
+class Endpoint extends AbstractEndpoint implements EndpointInterface
 {
     /**
      * @param array $data

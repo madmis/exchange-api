@@ -32,7 +32,7 @@ Easiest way to do this is through composer.
 
 Tests required running php built in server on 8000 port.
 
-    php -S localhost:8000
+    php -S localhost:8000 -t {path_to_ptoject}/tests/web
 
 ### Running Unit tests
 

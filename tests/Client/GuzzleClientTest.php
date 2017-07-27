@@ -37,7 +37,11 @@ class GuzzleClientTest extends TestCase
             static::assertNotNull($e->getResponse());
         }
 
+        $request = $client->createRequest('GET', '/');
+        $client->send($request);
+
         static::assertNotNull($client->getLastRequest());
         static::assertNotNull($client->getLastResponse());
+        static::assertEquals(200, $client->getLastResponse()->getStatusCode());
     }
 }
