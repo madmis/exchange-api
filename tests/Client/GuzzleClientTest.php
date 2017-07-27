@@ -25,7 +25,10 @@ class GuzzleClientTest extends TestCase
         static::assertInstanceOf(RequestInterface::class, $request);
     }
 
-    public function testSend()
+    /**
+     * expectedException ClientException
+     */
+    public function testSendError()
     {
         $client = new GuzzleClient('http://localhost:8000/', '/', ['first' => 1]);
         $request = $client->createRequest('GET', '/me');
@@ -33,9 +36,19 @@ class GuzzleClientTest extends TestCase
         try {
             $client->send($request, ['query' => ['test' => 'value']]);
         } catch (ClientException $e) {
-            static::assertNotNull($e->getRequest());
-            static::assertNotNull($e->getResponse());
+//            static::assertNotNull($e->getRequest());
+//            static::assertNotNull($e->getResponse());
         }
+
+        static::assertNotNull($client->getLastRequest());
+        static::assertNotNull($client->getLastResponse());
+        static::assertEquals(404, $client->getLastResponse()->getStatusCode());
+
+    }
+
+    public function testSend()
+    {
+        $client = new GuzzleClient('http://localhost:8000/', '/', ['first' => 1]);
 
         $request = $client->createRequest('GET', '/');
         $client->send($request);
