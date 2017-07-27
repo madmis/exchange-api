@@ -22,7 +22,7 @@ or [create pull request](https://github.com/madmis/exchange-api/compare)
 
 ## Install
     
-    composer require madmis/exchange-api 1.0.*
+    composer require madmis/exchange-api
 
 ## Running the tests
 To run the tests, you'll need to install [phpunit](https://phpunit.de/). 
